@@ -19,4 +19,22 @@ abstract class AppTheme {
       ),
     ),
   );
+
+  static final darkTheme = ThemeData(
+    primaryColor: AppColors.primary,
+    scaffoldBackgroundColor: AppColors.darkBackground,
+    brightness: Brightness.dark,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.primary,
+        textStyle: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
+      ),
+    ),
+  );
 }
