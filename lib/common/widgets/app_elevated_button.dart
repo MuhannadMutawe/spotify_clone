@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppElevatedButton extends StatelessWidget {
   const AppElevatedButton({
@@ -17,13 +18,13 @@ class AppElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        minimumSize: Size.fromHeight(height ?? 80),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+        minimumSize: Size.fromHeight(height ?? 75.h),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.r)),
       ),
       child: Text(
         label,
         style: TextStyle(
-          fontSize: 25,
+          fontSize: 25.sp,
           fontWeight: FontWeight.bold,
           color: Colors.white
         ),

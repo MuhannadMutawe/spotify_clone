@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spotify_app/core/config/themes/app_colors.dart';
 
 abstract class AppTheme {
@@ -11,11 +12,11 @@ abstract class AppTheme {
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary,
         textStyle: TextStyle(
-          fontSize: 20,
+          fontSize: 20.sp,
           fontWeight: FontWeight.bold,
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(25.r),
         ),
       ),
     ),
@@ -30,11 +31,11 @@ abstract class AppTheme {
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary,
         textStyle: TextStyle(
-          fontSize: 20,
+          fontSize: 20.sp,
           fontWeight: FontWeight.bold,
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(25.r),
         ),
       ),
     ),
