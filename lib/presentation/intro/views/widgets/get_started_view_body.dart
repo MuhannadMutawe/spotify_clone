@@ -12,7 +12,7 @@ class GetStartedViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 60.h, horizontal: 30.w),
+      padding: EdgeInsets.symmetric(vertical: 45.h, horizontal: 30.w),
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.fill,

@@ -22,7 +22,7 @@ class TitleAndGetStarted extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 21.h,
+          height: 25.h,
         ),
         Text(
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -34,7 +34,7 @@ class TitleAndGetStarted extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         SizedBox(
-          height: 25.h,
+          height: 50.h,
         ),
         AppElevatedButton(
           label: 'Get Started',
