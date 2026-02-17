@@ -40,7 +40,7 @@ class ModeButton extends StatelessWidget {
             ),
           ), // Clip oval
           SizedBox(
-            height: 20.h,
+            height: 16.h,
           ),
           Text(
             label,
