@@ -24,7 +24,7 @@ class ChooseModeButtons extends StatelessWidget {
           label: 'Light Mode',
           iconLink: AppVectors.sun,
           onTap: () => context.read<ThemeCubit>().changeMode(ThemeMode.light),
-        )
+        ),
       ],
     );
   }

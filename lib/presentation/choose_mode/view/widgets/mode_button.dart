@@ -18,11 +18,11 @@ class ModeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Column(
-        children: [
-          ClipOval(
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: onTap,
+          child: ClipOval(
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
               child: Container(
@@ -38,20 +38,20 @@ class ModeButton extends StatelessWidget {
                 ),
               ),
             ),
-          ), // Clip oval
-          SizedBox(
-            height: 16.h,
           ),
-          Text(
-            label,
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 16.sp,
-              color: Colors.white,
-            ),
+        ), // Clip oval
+        SizedBox(
+          height: 16.h,
+        ),
+        Text(
+          label,
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 16.sp,
+            color: Colors.white,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

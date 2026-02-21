@@ -29,21 +29,21 @@ class MyApp extends StatelessWidget {
           create: (context) => ThemeCubit(),
         ),
       ],
-      child: BlocBuilder<ThemeCubit, ThemeMode>(
-        builder: (context, themeMode) {
-          return ScreenUtilInit(
-            designSize: const Size(390, 844),
-            minTextAdapt: true,
-            splitScreenMode: true,
-            builder: (context, child) => MaterialApp.router(
+      child: ScreenUtilInit(
+        designSize: const Size(390, 844),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) => BlocBuilder<ThemeCubit, ThemeMode>(
+          builder: (context, themeMode) {
+            return MaterialApp.router(
               routerConfig: AppRouter.router,
               debugShowCheckedModeBanner: false,
               themeMode: themeMode,
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
