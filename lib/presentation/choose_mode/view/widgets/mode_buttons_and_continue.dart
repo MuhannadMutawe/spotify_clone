@@ -31,7 +31,7 @@ class ModeButtonsAndContinue extends StatelessWidget {
         ),
         AppElevatedButton(
           label: 'Continue',
-          onPressed: () => context.pushReplacement(AppRouter.kChooseModeView),
+          onPressed: () => context.pushReplacement(AppRouter.kSignUpOrSignInView),
         ),
       ],
     );

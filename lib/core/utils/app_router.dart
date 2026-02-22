@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:spotify_app/presentation/auth/views/signup_or_signin_view.dart';
 import 'package:spotify_app/presentation/choose_mode/view/choose_mode_view.dart';
 import 'package:spotify_app/presentation/intro/views/get_started_view.dart';
 import 'package:spotify_app/presentation/splash/view/splash_view.dart';
@@ -6,6 +7,7 @@ import 'package:spotify_app/presentation/splash/view/splash_view.dart';
 abstract class AppRouter {
   static const kGetStartedView = '/kGetStartedView';
   static const kChooseModeView = '/kChooseModeView';
+  static const kSignUpOrSignInView = '/kSignUpOrSignInView';
   static final GoRouter router = GoRouter(
     routes: [
       GoRoute(
@@ -19,6 +21,10 @@ abstract class AppRouter {
       GoRoute(
         path: kChooseModeView,
         builder: (context, state) => const ChooseModeView(),
+      ),
+      GoRoute(
+        path: kSignUpOrSignInView,
+        builder: (context, state) => const SignUpOrSignInView(),
       ),
     ],
   );
