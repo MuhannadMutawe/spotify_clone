@@ -23,7 +23,7 @@ class SignupOrSigninViewBody extends StatelessWidget {
           child: SvgPicture.asset(AppVectors.bottomPattern),
         ),
         Align(
-          alignment: Alignment.bottomRight,
+          alignment: Alignment.bottomLeft,
           child: Image.asset(AppImages.authBG),
         ),
         SignupOrSigninBodyTitleAndButtons(),

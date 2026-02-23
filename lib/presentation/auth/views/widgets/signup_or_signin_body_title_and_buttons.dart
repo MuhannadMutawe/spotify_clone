@@ -35,7 +35,7 @@ class SignupOrSigninBodyTitleAndButtons extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 color: AppColors.grey,
-                fontSize: 16.sp,
+                fontSize: 18.sp,
               ), // T
               textAlign: TextAlign.center, // extStyle
             ), // Text

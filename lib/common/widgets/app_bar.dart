@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget{
@@ -16,9 +17,12 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget{
       elevation: 0,
       backgroundColor: Colors.transparent,
       title: title,
-      leading: IconButton(
-        onPressed: () => context.pop(),
-        icon: Icon(Icons.arrow_back_ios),
+      leading: Padding(
+        padding: EdgeInsetsDirectional.only(start: 14.w),
+        child: IconButton(
+          onPressed: () => context.pop(),
+          icon: Icon(Icons.arrow_back_ios),
+        ),
       ),
     );
   }

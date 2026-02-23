@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_app/common/widgets/app_bar.dart';
 import 'package:spotify_app/core/config/assets/app_vectors.dart';
@@ -11,8 +12,10 @@ class SignupView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BasicAppBar(
-        title: Center(
-          child: SvgPicture.asset(AppVectors.logo),
+        title: SvgPicture.asset(
+          AppVectors.logo,
+          height: 40.h,
+          width: 40.w,
         ),
       ),
       body: SignupViewBody(),
