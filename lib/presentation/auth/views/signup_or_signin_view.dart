@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:spotify_app/presentation/auth/views/signup_or_signin_widget/signup_or_signin_view_body.dart';
+import 'package:spotify_app/presentation/auth/views/widgetS/signup_or_signin_view_body.dart';
 
 class SignUpOrSignInView extends StatelessWidget {
   const SignUpOrSignInView({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:spotify_app/presentation/auth/views/signup_or_signin_widget/signup_or_signin_body_title_and_buttons.dart';
+import 'package:spotify_app/presentation/auth/views/widgetS/signup_or_signin_body_title_and_buttons.dart';
 
 import '../../../../core/config/assets/app_images.dart';
 import '../../../../core/config/assets/app_vectors.dart';

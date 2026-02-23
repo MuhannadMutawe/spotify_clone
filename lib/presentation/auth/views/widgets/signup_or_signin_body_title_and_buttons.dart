@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:spotify_app/presentation/auth/views/signup_or_signin_widget/signup_or_signin_buttons.dart';
+import 'package:spotify_app/presentation/auth/views/widgetS/signup_or_signin_buttons.dart';
 
 import '../../../../core/config/assets/app_vectors.dart';
 import '../../../../core/config/themes/app_colors.dart';
