@@ -20,11 +20,13 @@ class SignupView extends StatelessWidget {
         ),
       ),
       body: SignupViewBody(),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(bottom: 50.h),
-        child: DoNotHaveAccountText(
-          askTitle: 'Do you have an account?  ',
-          buttonTitle: 'Sign in',
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.only(bottom: 20.h),
+          child: DoNotHaveAccountText(
+            askTitle: 'Do you have an account?  ',
+            buttonTitle: 'Sign in',
+          ),
         ),
       ),
     );
