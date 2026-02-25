@@ -27,7 +27,7 @@ class SignupOrSigninButtons extends StatelessWidget {
         Expanded(
           child: TextButton(
             style: TextButton.styleFrom(
-              minimumSize: Size.fromHeight(75.h),
+              minimumSize: Size.fromHeight(70.h),
             ),
             onPressed: () => context.push(AppRouter.kSignInView),
             child: Text(

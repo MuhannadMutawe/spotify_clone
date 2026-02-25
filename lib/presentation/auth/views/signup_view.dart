@@ -24,7 +24,7 @@ class SignupView extends StatelessWidget {
       body: SignupViewBody(),
       bottomNavigationBar: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(bottom: 20.h),
+          padding: EdgeInsets.only(bottom: 30.h),
           child: DoNotHaveAccountText(
             askTitle: 'Do you have an account?  ',
             buttonTitle: 'Sign in',

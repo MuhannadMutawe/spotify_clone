@@ -18,7 +18,7 @@ class AppElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        minimumSize: Size.fromHeight(height ?? 75.h),
+        minimumSize: Size.fromHeight(height ?? 70.h),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.r)),
       ),
       child: Text(
