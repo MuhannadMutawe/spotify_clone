@@ -26,13 +26,16 @@ class SignupOrSigninButtons extends StatelessWidget {
         ),
         Expanded(
           child: TextButton(
-            onPressed: () {},
+            style: TextButton.styleFrom(
+              minimumSize: Size.fromHeight(75.h),
+            ),
+            onPressed: () => context.push(AppRouter.kSignInView),
             child: Text(
               'Sign In',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.sp,
-                  color: context.isDarkMode? Colors.white : Colors.black
+                fontWeight: FontWeight.bold,
+                fontSize: 20.sp,
+                color: context.isDarkMode ? Colors.white : Colors.black,
               ),
             ),
           ),

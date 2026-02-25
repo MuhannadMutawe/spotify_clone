@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:spotify_app/common/helper/is_dark_mode.dart';
 import 'package:spotify_app/core/config/themes/app_colors.dart';
 
@@ -10,10 +9,12 @@ class DoNotHaveAccountText extends StatelessWidget {
     super.key,
     required this.askTitle,
     required this.buttonTitle,
+    this.onTap,
   });
 
   final String askTitle;
   final String buttonTitle;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +38,7 @@ class DoNotHaveAccountText extends StatelessWidget {
               color: AppColors.primary
             ),
             recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                context.pop();
-              },
+              ..onTap = onTap,
           ),
         ],
       ),

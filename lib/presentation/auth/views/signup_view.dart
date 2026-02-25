@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:spotify_app/common/widgets/app_bar.dart';
 import 'package:spotify_app/core/config/assets/app_vectors.dart';
+import 'package:spotify_app/core/utils/app_router.dart';
 import 'package:spotify_app/presentation/auth/views/widgets/do_not_have_account_text.dart';
 import 'package:spotify_app/presentation/auth/views/widgets/signup_view_body.dart';
 
@@ -26,6 +28,7 @@ class SignupView extends StatelessWidget {
           child: DoNotHaveAccountText(
             askTitle: 'Do you have an account?  ',
             buttonTitle: 'Sign in',
+            onTap: () => context.pushReplacement(AppRouter.kSignInView),
           ),
         ),
       ),
