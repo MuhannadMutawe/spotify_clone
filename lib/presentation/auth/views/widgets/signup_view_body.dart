@@ -17,7 +17,7 @@ class SignupViewBody extends StatelessWidget {
             title: 'Register',
           ),
           SizedBox(
-            height: 30.h,
+            height: 50.h,
           ),
           SignupTextFormFieldsAndRegisterButton(),
         ],

@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:spotify_app/common/helper/is_dark_mode.dart';
 import 'package:spotify_app/core/config/themes/app_colors.dart';
 
 class DoNotHaveAccountText extends StatelessWidget {
@@ -24,7 +25,8 @@ class DoNotHaveAccountText extends StatelessWidget {
             text: askTitle,
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              fontSize: 16.sp
+              fontSize: 16.sp,
+              color: context.isDarkMode? AppColors.grey : Colors.black54
             ),
           ),
           TextSpan(

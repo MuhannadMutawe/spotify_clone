@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:spotify_app/common/helper/is_dark_mode.dart';
 import 'package:spotify_app/presentation/auth/views/widgetS/signup_or_signin_buttons.dart';
 
 import '../../../../core/config/assets/app_vectors.dart';
@@ -34,8 +35,8 @@ class SignupOrSigninBodyTitleAndButtons extends StatelessWidget {
               'Spotify is a proprietary Swedish audio streaming and media services provider ',
               style: TextStyle(
                 fontWeight: FontWeight.w500,
-                color: AppColors.grey,
-                fontSize: 18.sp,
+                color: context.isDarkMode? AppColors.grey : Colors.black54,
+                fontSize: 16.sp,
               ), // T
               textAlign: TextAlign.center, // extStyle
             ), // Text

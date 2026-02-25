@@ -18,7 +18,7 @@ class TitleAndGetStarted extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontSize: 20.sp,
+            fontSize: 22.sp,
           ),
         ),
         SizedBox(

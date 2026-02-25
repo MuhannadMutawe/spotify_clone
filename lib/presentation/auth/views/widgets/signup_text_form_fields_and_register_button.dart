@@ -48,14 +48,14 @@ class _SignupTextFormFieldsAndRegisterButtonState
             controller: _nameController,
             validator: (value) {
               if (value != null && value.isEmpty) {
-                return 'Please the Name field is required';
+                return 'Please the Name is required';
               }
 
               return 'Something wrong !!';
             },
           ),
           SizedBox(
-            height: 20.h,
+            height: 30.h,
           ),
           CustomTextFormField(
             hintText: 'Enter Email',
@@ -69,7 +69,7 @@ class _SignupTextFormFieldsAndRegisterButtonState
             },
           ),
           SizedBox(
-            height: 20.h,
+            height: 30.h,
           ),
           CustomTextFormField(
             hintText: 'Password',
@@ -83,7 +83,7 @@ class _SignupTextFormFieldsAndRegisterButtonState
             },
           ),
           SizedBox(
-            height: 20.h,
+            height: 45.h,
           ),
           AppElevatedButton(
             label: 'Create Account',

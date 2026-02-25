@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
+import 'package:spotify_app/common/helper/is_dark_mode.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget{
   const BasicAppBar({
@@ -17,11 +17,21 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget{
       elevation: 0,
       backgroundColor: Colors.transparent,
       title: title,
-      leading: Padding(
-        padding: EdgeInsetsDirectional.only(start: 14.w),
-        child: IconButton(
-          onPressed: () => context.pop(),
-          icon: Icon(Icons.arrow_back_ios),
+      leading: IconButton(
+        onPressed: (){
+          Navigator.pop(context);
+        },
+        icon: Container(
+          height: 50,
+          width: 50,
+          decoration: BoxDecoration(
+              color: context.isDarkMode ? Colors.white.withOpacity(0.03) : Colors.black.withOpacity(0.04),
+              shape: BoxShape.circle
+          ),
+          child: Icon(
+            Icons.arrow_back_ios_new,
+            color: context.isDarkMode ? Colors.white : Colors.black,
+          ),
         ),
       ),
     );
