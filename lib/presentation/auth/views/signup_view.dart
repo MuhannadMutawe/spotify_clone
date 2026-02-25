@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_app/common/widgets/app_bar.dart';
 import 'package:spotify_app/core/config/assets/app_vectors.dart';
+import 'package:spotify_app/presentation/auth/views/widgets/do_not_have_account_text.dart';
 import 'package:spotify_app/presentation/auth/views/widgets/signup_view_body.dart';
 
 class SignupView extends StatelessWidget {
@@ -19,6 +20,13 @@ class SignupView extends StatelessWidget {
         ),
       ),
       body: SignupViewBody(),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(bottom: 50.h),
+        child: DoNotHaveAccountText(
+          askTitle: 'Do you have an account? ',
+          buttonTitle: 'Sign in',
+        ),
+      ),
     );
   }
 }

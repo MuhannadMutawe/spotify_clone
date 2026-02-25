@@ -1,0 +1,46 @@
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:spotify_app/core/config/themes/app_colors.dart';
+
+class DoNotHaveAccountText extends StatelessWidget {
+  const DoNotHaveAccountText({
+    super.key,
+    required this.askTitle,
+    required this.buttonTitle,
+  });
+
+  final String askTitle;
+  final String buttonTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      textAlign: TextAlign.center,
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: askTitle,
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 16.sp
+            ),
+          ),
+          TextSpan(
+            text: buttonTitle,
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 16.sp,
+              color: AppColors.primary
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                context.pop();
+              },
+          ),
+        ],
+      ),
+    );
+  }
+}
