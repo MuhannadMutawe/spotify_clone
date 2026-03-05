@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:spotify_app/data/models/auth/create_user_req.dart';
 import 'package:spotify_app/data/sources/auth/auth_firebase_source.dart';
@@ -16,14 +17,20 @@ class AuthRepositoryImplementation extends AuthRepository {
   }
 
   @override
-  Future<void> signup(CreateUserReq user) async {
+  Future<Either> signup(CreateUserReq user) async {
     try {
       await authFirebaseSource.signup(user);
-
+      return right('Sign In Was Successful');
     } on FirebaseAuthException catch(e){
-
+      String message = '';
+      if (e.code == 'Invalid Email') {
+        message = 'No User Found for that Email';
+      } else if (e.code == 'invalid-credentials') {
+        message = 'Wrong Password Provided';
+      }
+      return left(message);
     } on Exception catch(e){
-
+      return left(e.toString());
     }
   }
 
