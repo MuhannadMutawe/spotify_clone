@@ -4,16 +4,30 @@ import 'package:spotify_app/data/models/auth/create_user_req.dart';
 import 'package:spotify_app/data/sources/auth/auth_firebase_source.dart';
 import 'package:spotify_app/domain/repository/auth/auth_repository.dart';
 
-class AuthRepositoryImplementation extends AuthRepository {
+import '../../models/auth/signin_user_req.dart';
 
+class AuthRepositoryImplementation extends AuthRepository {
   final AuthFirebaseSource authFirebaseSource;
 
   AuthRepositoryImplementation(this.authFirebaseSource);
 
   @override
-  Future<void> signin() {
-    // TODO: implement signin
-    throw UnimplementedError();
+  Future<Either> signin(SignInUserReq userInfo) async {
+    try {
+      await authFirebaseSource.signin(userInfo);
+      return Right('Signin was Successful');
+    } on FirebaseAuthException catch (e) {
+      String message = '';
+
+      if (e.code == 'invalid-email') {
+        message = 'Not user found for that email';
+      } else if (e.code == 'invalid-credential') {
+        message = 'Wrong password provided for that user';
+      }
+      return Left(message);
+    } on Exception catch (e) {
+      return left(e.toString());
+    }
   }
 
   @override
@@ -21,7 +35,7 @@ class AuthRepositoryImplementation extends AuthRepository {
     try {
       await authFirebaseSource.signup(user);
       return right('Sign In Was Successful');
-    } on FirebaseAuthException catch(e){
+    } on FirebaseAuthException catch (e) {
       String message = '';
       if (e.code == 'Invalid Email') {
         message = 'No User Found for that Email';
@@ -29,9 +43,8 @@ class AuthRepositoryImplementation extends AuthRepository {
         message = 'Wrong Password Provided';
       }
       return left(message);
-    } on Exception catch(e){
+    } on Exception catch (e) {
       return left(e.toString());
     }
   }
-
 }
