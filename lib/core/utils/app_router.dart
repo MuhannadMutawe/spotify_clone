@@ -1,10 +1,16 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:spotify_app/domain/usecases/auth/signin_use_case.dart';
+import 'package:spotify_app/domain/usecases/auth/signup_use_case.dart';
+import 'package:spotify_app/presentation/auth/manger/Sign_in/sign_in_cubit.dart';
+import 'package:spotify_app/presentation/auth/manger/sign_up/sign_up_cubit.dart';
 import 'package:spotify_app/presentation/auth/views/signin_view.dart';
 import 'package:spotify_app/presentation/auth/views/signup_or_signin_view.dart';
 import 'package:spotify_app/presentation/auth/views/signup_view.dart';
 import 'package:spotify_app/presentation/choose_mode/view/choose_mode_view.dart';
 import 'package:spotify_app/presentation/intro/views/get_started_view.dart';
 import 'package:spotify_app/presentation/splash/view/splash_view.dart';
+import 'package:spotify_app/setup_service_locator.dart';
 
 abstract class AppRouter {
   static const kGetStartedView = '/kGetStartedView';
@@ -32,11 +38,17 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kSignInView,
-        builder: (context, state) => const SigninView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => SignInCubit(getIt<SignInUseCase>()),
+          child: const SigninView(),
+        ),
       ),
       GoRoute(
         path: kSignUpView,
-        builder: (context, state) => const SignupView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => SignUpCubit(getIt<SignupUseCase>()),
+          child: const SignupView(),
+        ),
       ),
     ],
   );
