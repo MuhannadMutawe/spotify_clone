@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_app/data/models/auth/signin_user_req.dart';
-import 'package:spotify_app/domain/usecases/auth/signIn_use_case.dart';
+import 'package:spotify_app/domain/usecases/auth/signin_use_case.dart';
 import 'package:spotify_app/presentation/auth/manger/Sign_in/sign_in_state.dart';
 
 class SignInCubit extends Cubit<SignInState> {

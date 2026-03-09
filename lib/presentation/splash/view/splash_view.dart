@@ -20,6 +20,7 @@ class _SplashViewState extends State<SplashView> {
   Future<void> redirect() async {
     await Future.delayed(
       Duration(seconds: 3),
+      // ignore: use_build_context_synchronously
       () => context.pushReplacement(AppRouter.kGetStartedView),
     );
   }

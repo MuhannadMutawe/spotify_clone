@@ -9,7 +9,7 @@ class ModeButton extends StatelessWidget {
     super.key,
     required this.label,
     required this.iconLink,
-    this.onTap
+    this.onTap,
   });
 
   final String label;
@@ -29,6 +29,7 @@ class ModeButton extends StatelessWidget {
                 height: 80.h,
                 width: 80.w,
                 decoration: BoxDecoration(
+                  // ignore: deprecated_member_use
                   color: Color(0xff30393C).withOpacity(0.4),
                   shape: BoxShape.circle,
                 ),

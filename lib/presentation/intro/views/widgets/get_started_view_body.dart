@@ -18,6 +18,7 @@ class GetStartedViewBody extends StatelessWidget {
           fit: BoxFit.fill,
           image: AssetImage(AppImages.introBG),
         ),
+        // ignore: deprecated_member_use
         color: Colors.black.withOpacity(0.15),
       ),
       child: Column(
@@ -25,7 +26,7 @@ class GetStartedViewBody extends StatelessWidget {
         children: [
           SvgPicture.asset(AppVectors.logo),
           const Spacer(),
-          TitleAndGetStarted()
+          TitleAndGetStarted(),
         ],
       ),
     );

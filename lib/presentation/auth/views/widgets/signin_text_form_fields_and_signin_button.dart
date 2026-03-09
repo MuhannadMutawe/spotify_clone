@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spotify_app/data/models/auth/signin_user_req.dart';
+import 'package:spotify_app/presentation/auth/manger/Sign_in/sign_in_cubit.dart';
 import 'package:spotify_app/presentation/auth/views/widgets/custom_text_form_field.dart';
 
 import '../../../../common/widgets/app_elevated_button.dart';
@@ -70,7 +73,14 @@ class _SigninTextFormFieldsAndSigninButtonState
           AppElevatedButton(
             label: 'Sign In',
             onPressed: () {
-              if (_formKey.currentState!.validate()) {}
+              if (_formKey.currentState!.validate()) {
+                BlocProvider.of<SignInCubit>(context).signInCubit(
+                  userInfo: SignInUserReq(
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                  ),
+                );
+              }
             },
           ),
         ],
