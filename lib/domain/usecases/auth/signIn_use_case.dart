@@ -10,7 +10,7 @@ class SignInUseCase implements UseCase<Either, SignInUserReq> {
   SignInUseCase(this._authRepository);
 
   @override
-  Future<Either> call([SignInUserReq? userInfo]) async {
+  Future<Either<String, String>> call([SignInUserReq? userInfo]) async {
     return await _authRepository.signin(userInfo!);
   }
 }

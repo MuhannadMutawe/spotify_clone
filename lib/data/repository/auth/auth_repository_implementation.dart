@@ -12,39 +12,90 @@ class AuthRepositoryImplementation extends AuthRepository {
   AuthRepositoryImplementation(this.authFirebaseSource);
 
   @override
-  Future<Either> signin(SignInUserReq userInfo) async {
+  Future<Either<String, String>> signin(SignInUserReq userInfo) async {
     try {
       await authFirebaseSource.signin(userInfo);
-      return Right('Signin was Successful');
+      return Right('Sign in was Successful');
     } on FirebaseAuthException catch (e) {
-      String message = '';
-
-      if (e.code == 'invalid-email') {
-        message = 'Not user found for that email';
-      } else if (e.code == 'invalid-credential') {
-        message = 'Wrong password provided for that user';
-      }
-      return Left(message);
+      return Left('Error is ${handleAuthError(e)}');
     } on Exception catch (e) {
-      return left(e.toString());
+      return Left(e.toString());
     }
   }
 
   @override
-  Future<Either> signup(CreateUserReq user) async {
+  Future<Either<String, String>> signup(CreateUserReq user) async {
     try {
       await authFirebaseSource.signup(user);
-      return right('Sign In Was Successful');
+      return Right('Sign up Was Successful');
     } on FirebaseAuthException catch (e) {
-      String message = '';
-      if (e.code == 'Invalid Email') {
-        message = 'No User Found for that Email';
-      } else if (e.code == 'invalid-credentials') {
-        message = 'Wrong Password Provided';
-      }
-      return left(message);
+      return Left('Error is ${handleAuthError(e)}');
     } on Exception catch (e) {
-      return left(e.toString());
+      return Left(e.toString());
     }
+  }
+}
+
+String handleAuthError(FirebaseAuthException e) {
+  switch (e.code) {
+    case 'invalid-email':
+      return 'The email address is invalid.';
+
+    case 'user-disabled':
+      return 'This user account has been disabled.';
+
+    case 'user-not-found':
+      return 'No user found for this email.';
+
+    case 'wrong-password':
+      return 'Incorrect password.';
+
+    case 'email-already-in-use':
+      return 'This email is already in use.';
+
+    case 'operation-not-allowed':
+      return 'This sign-in method is not enabled.';
+
+    case 'weak-password':
+      return 'The password is too weak.';
+
+    case 'too-many-requests':
+      return 'Too many requests. Try again later.';
+
+    case 'network-request-failed':
+      return 'Network error. Check your connection.';
+
+    case 'requires-recent-login':
+      return 'Please log in again to continue.';
+
+    case 'credential-already-in-use':
+      return 'This credential is already associated with another account.';
+
+    case 'account-exists-with-different-credential':
+      return 'An account already exists with the same email but different sign-in credentials.';
+
+    case 'invalid-credential':
+      return 'The credential is invalid or expired.';
+
+    case 'invalid-verification-code':
+      return 'Invalid verification code.';
+
+    case 'invalid-verification-id':
+      return 'Invalid verification ID.';
+
+    case 'captcha-check-failed':
+      return 'Captcha verification failed.';
+
+    case 'app-not-authorized':
+      return 'This app is not authorized to use Firebase Authentication.';
+
+    case 'keychain-error':
+      return 'Keychain error occurred.';
+
+    case 'internal-error':
+      return 'Internal authentication error.';
+
+    default:
+      return 'Authentication failed. Please try again.';
   }
 }

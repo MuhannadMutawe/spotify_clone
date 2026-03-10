@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spotify_app/data/models/auth/create_user_req.dart';
+import 'package:spotify_app/presentation/auth/manger/sign_up/sign_up_cubit.dart';
 import 'package:spotify_app/presentation/auth/views/widgets/custom_text_form_field.dart';
 
 import '../../../../common/widgets/app_elevated_button.dart';
@@ -88,8 +91,14 @@ class _SignupTextFormFieldsAndRegisterButtonState
           AppElevatedButton(
             label: 'Create Account',
             onPressed: () {
-              if(_formKey.currentState!.validate()){
-
+              if (_formKey.currentState!.validate()) {
+                BlocProvider.of<SignUpCubit>(context).signUpCubit(
+                  user: CreateUserReq(
+                    fullName: _nameController.text.toLowerCase(),
+                    email: _emailController.text.toLowerCase(),
+                    password: _passwordController.text.toLowerCase(),
+                  ),
+                );
               }
             },
           ),

@@ -10,7 +10,7 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   Future<void> signUpCubit({required CreateUserReq user}) async {
     emit(SignUpState.loading());
-    var response = await _signupUseCase.call();
+    var response = await _signupUseCase.call(user);
     response.fold(
       (errorMessage) {
         emit(SignUpState.failure(errorMessage));

@@ -4,7 +4,7 @@ import '../../../data/models/auth/create_user_req.dart';
 import '../../../data/models/auth/signin_user_req.dart';
 
 abstract class AuthRepository {
-  Future<Either> signup(CreateUserReq user);
+  Future<Either<String, String>> signup(CreateUserReq user);
 
-  Future<Either> signin(SignInUserReq userInfo);
+  Future<Either<String, String>> signin(SignInUserReq userInfo);
 }

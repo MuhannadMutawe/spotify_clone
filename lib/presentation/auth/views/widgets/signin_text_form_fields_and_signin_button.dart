@@ -45,7 +45,7 @@ class _SigninTextFormFieldsAndSigninButtonState
         children: [
           CustomTextFormField(
             hintText: 'Enter Email',
-            // controller: _emailController,
+            controller: _emailController,
             validator: (value) {
               if (value != null && value.isEmpty) {
                 return 'Please the Email is required';
@@ -58,7 +58,7 @@ class _SigninTextFormFieldsAndSigninButtonState
           ),
           CustomTextFormField(
             hintText: 'Password',
-            // controller: _passwordController,
+            controller: _passwordController,
             validator: (value) {
               if (value != null && value.isEmpty) {
                 return 'Please the Password is required';
@@ -76,8 +76,8 @@ class _SigninTextFormFieldsAndSigninButtonState
               if (_formKey.currentState!.validate()) {
                 BlocProvider.of<SignInCubit>(context).signInCubit(
                   userInfo: SignInUserReq(
-                    email: _emailController.text,
-                    password: _passwordController.text,
+                    email: _emailController.text.toLowerCase(),
+                    password: _passwordController.text.toLowerCase(),
                   ),
                 );
               }
