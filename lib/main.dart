@@ -10,6 +10,7 @@ import 'package:spotify_app/core/utils/app_router.dart';
 import 'package:spotify_app/core/utils/simple_bloc_observer.dart';
 import 'package:spotify_app/firebase_options.dart';
 import 'package:spotify_app/presentation/choose_mode/manger/theme_cubit.dart';
+import 'package:spotify_app/setup_service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +23,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Bloc.observer = SimpleBlocObserver();
+  setupServiceLocator();
   runApp(const MyApp());
 }
 

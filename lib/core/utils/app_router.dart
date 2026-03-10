@@ -8,6 +8,7 @@ import 'package:spotify_app/presentation/auth/views/signin_view.dart';
 import 'package:spotify_app/presentation/auth/views/signup_or_signin_view.dart';
 import 'package:spotify_app/presentation/auth/views/signup_view.dart';
 import 'package:spotify_app/presentation/choose_mode/view/choose_mode_view.dart';
+import 'package:spotify_app/presentation/home/views/home_view.dart';
 import 'package:spotify_app/presentation/intro/views/get_started_view.dart';
 import 'package:spotify_app/presentation/splash/view/splash_view.dart';
 import 'package:spotify_app/setup_service_locator.dart';
@@ -18,6 +19,7 @@ abstract class AppRouter {
   static const kSignUpOrSignInView = '/kSignUpOrSignInView';
   static const kSignUpView = '/kSignUpView';
   static const kSignInView = '/kSignInView';
+  static const kHomeView = '/kHomeView';
   static final GoRouter router = GoRouter(
     routes: [
       GoRoute(
@@ -49,6 +51,10 @@ abstract class AppRouter {
           create: (context) => SignUpCubit(getIt<SignupUseCase>()),
           child: const SignupView(),
         ),
+      ),
+      GoRoute(
+        path: kHomeView,
+        builder: (context, state) => const HomeView(),
       ),
     ],
   );
