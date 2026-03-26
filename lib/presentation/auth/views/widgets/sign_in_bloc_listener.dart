@@ -30,6 +30,8 @@ class SignInBlocListener extends StatelessWidget {
           return null;
         },
         success: () {
+          context.pop();
+          context.pop();
           context.pushReplacement(AppRouter.kHomeView);
           return null;
         },
