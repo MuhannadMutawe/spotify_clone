@@ -1,42 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:spotify_app/common/helper/is_dark_mode.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BasicAppBar({
     super.key,
     this.title,
+    this.leading,
+    this.centerTitle = true,
   });
 
   final Widget? title;
+  final Widget? leading;
+  final bool centerTitle;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      centerTitle: true,
+      centerTitle: centerTitle,
       elevation: 0,
       backgroundColor: Colors.transparent,
       title: title,
-      leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: Container(
-          height: 50,
-          width: 50,
-          decoration: BoxDecoration(
-            color: context.isDarkMode
-                // ignore: deprecated_member_use
-                ? Colors.white.withOpacity(0.03)
-                // ignore: deprecated_member_use
-                : Colors.black.withOpacity(0.04),
-            shape: BoxShape.circle,
-          ),
-          child: Icon(
-            Icons.arrow_back_ios_new,
-            color: context.isDarkMode ? Colors.white : Colors.black,
-          ),
-        ),
-      ),
+      leading: leading,
     );
   }
 
