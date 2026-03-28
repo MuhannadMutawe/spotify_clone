@@ -1,52 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:spotify_app/core/config/assets/app_images.dart';
-import 'package:spotify_app/core/config/assets/app_vectors.dart';
+import 'package:spotify_app/presentation/home/views/widget/home_tabs.dart';
+import 'package:spotify_app/presentation/home/views/widget/home_top_card.dart';
 
-class HomeViewBody extends StatelessWidget {
+class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
 
+  @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         HomeTopCard(),
+        HomeTabs(),
       ],
-    );
-  }
-}
-
-class HomeTopCard extends StatelessWidget {
-  const HomeTopCard({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        height: 140.h,
-        child: Stack(
-          children: [
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: SvgPicture.asset(
-                AppVectors.homeTopCard,
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: EdgeInsets.only(right: 60.w),
-                child: Image.asset(
-                  AppImages.homeArtist,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
