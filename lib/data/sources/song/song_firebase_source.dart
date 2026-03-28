@@ -13,7 +13,7 @@ class SongFirebaseSourceImplementation extends SongFirebaseSource {
     var data = await FirebaseFirestore.instance
         .collection('Songs')
         .orderBy('releaseDate', descending: true)
-        .limit(3)
+        .limit(6)
         .get();
     for (var element in data.docs) {
       var songModel = SongModel.fromJsom(element.data());

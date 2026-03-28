@@ -60,7 +60,8 @@ abstract class AppRouter {
           providers: [
             BlocProvider<GetNewsSongsCubit>(
               create: (context) =>
-                  GetNewsSongsCubit(getIt<GetNewsSongsUseCase>()),
+                  GetNewsSongsCubit(getIt<GetNewsSongsUseCase>())
+                    ..getNewsSongs(),
             ),
           ],
           child: const HomeView(),
