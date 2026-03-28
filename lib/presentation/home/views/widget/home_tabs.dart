@@ -30,7 +30,7 @@ class _HomeTabsState extends State<HomeTabs>
       labelPadding: EdgeInsets.symmetric(vertical: 16.w),
       labelColor: context.isDarkMode ? Colors.white : Colors.black,
       indicatorColor: AppColors.primary,
-      padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 16.w),
+      padding: EdgeInsets.symmetric(vertical: 25.h, horizontal: 16.w),
       tabs: [
         Text(
           'News',

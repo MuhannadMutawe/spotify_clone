@@ -25,7 +25,7 @@ class HomeTopCard extends StatelessWidget {
             Align(
               alignment: Alignment.bottomRight,
               child: Padding(
-                padding: EdgeInsets.only(right: 60.w),
+                padding: EdgeInsets.only(right: 68.w),
                 child: Image.asset(
                   AppImages.homeArtist,
                 ),
