@@ -32,12 +32,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => ThemeCubit(),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => ThemeCubit(),
       child: ScreenUtilInit(
         designSize: const Size(390, 844),
         minTextAdapt: true,
