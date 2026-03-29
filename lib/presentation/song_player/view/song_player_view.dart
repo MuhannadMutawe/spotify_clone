@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spotify_app/common/helper/is_dark_mode.dart';
 import 'package:spotify_app/common/widgets/app_bar.dart';
 import 'package:spotify_app/domain/entities/song/song_entity.dart';
+import 'package:spotify_app/presentation/song_player/view/widgets/song_player_view_body.dart';
 
 class SongPlayerView extends StatelessWidget {
   const SongPlayerView({
@@ -52,6 +53,9 @@ class SongPlayerView extends StatelessWidget {
             ),
           ),
         ),
+      ),
+      body: SongPlayerViewBody(
+        songEntity: songEntity,
       ),
     );
   }
