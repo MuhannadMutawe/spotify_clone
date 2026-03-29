@@ -5,6 +5,7 @@ class SongModel {
   String? title;
   String? artist;
   String? imageCover;
+  String? audioUrl;
   double? duration;
   Timestamp? releaseDate;
 
@@ -14,6 +15,7 @@ class SongModel {
     required this.duration,
     required this.releaseDate,
     required this.imageCover,
+    required this.audioUrl,
   });
 
   SongModel.fromJsom(Map<String, dynamic> data) {
@@ -22,6 +24,7 @@ class SongModel {
     imageCover = data['imageCover'];
     duration = data['duration'];
     releaseDate = data['releaseDate'];
+    audioUrl = data['audioUrl'];
   }
 }
 
@@ -33,6 +36,7 @@ extension SongModelX on SongModel {
       duration: duration!,
       releaseDate: releaseDate!,
       imageCover: imageCover!,
+      audioUrl: audioUrl!,
     );
   }
 }
