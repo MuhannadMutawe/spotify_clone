@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:spotify_app/domain/entities/song/song_entity.dart';
 import 'package:spotify_app/domain/usecases/auth/signin_use_case.dart';
 import 'package:spotify_app/domain/usecases/auth/signup_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/get_news_songs_use_case.dart';
@@ -14,6 +15,7 @@ import 'package:spotify_app/presentation/home/manger/cubit/get_play_list_cubit.d
 import 'package:spotify_app/presentation/home/manger/get_news_songs/get_news_songs_cubit.dart';
 import 'package:spotify_app/presentation/home/views/home_view.dart';
 import 'package:spotify_app/presentation/intro/views/get_started_view.dart';
+import 'package:spotify_app/presentation/song_player/view/song_player_view.dart';
 import 'package:spotify_app/presentation/splash/view/splash_view.dart';
 import 'package:spotify_app/setup_service_locator.dart';
 
@@ -24,6 +26,7 @@ abstract class AppRouter {
   static const kSignUpView = '/kSignUpView';
   static const kSignInView = '/kSignInView';
   static const kHomeView = '/kHomeView';
+  static const kSongPlayerView = '/kSongPlayerView';
   static final GoRouter router = GoRouter(
     routes: [
       GoRoute(
@@ -72,6 +75,11 @@ abstract class AppRouter {
           ],
           child: const HomeView(),
         ),
+      ),
+      GoRoute(
+        path: kSongPlayerView,
+        builder: (context, state) =>
+            SongPlayerView(songEntity: (state.extra) as SongEntity),
       ),
     ],
   );

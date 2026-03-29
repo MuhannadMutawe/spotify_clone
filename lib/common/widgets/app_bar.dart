@@ -6,12 +6,14 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.title,
     this.leading,
+    this.actions,
     this.centerTitle = true,
   });
 
   final Widget? title;
   final Widget? leading;
   final bool centerTitle;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       scrolledUnderElevation: 0,
       title: title,
       leading: leading,
+      actions: actions,
     );
   }
 

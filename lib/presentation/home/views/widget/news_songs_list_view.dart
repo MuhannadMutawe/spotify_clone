@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:spotify_app/core/utils/app_router.dart';
 import 'package:spotify_app/domain/entities/song/song_entity.dart';
 import 'package:spotify_app/presentation/home/views/widget/news_songs_items.dart';
 
@@ -16,8 +18,13 @@ class NewsSongsListView extends StatelessWidget {
     return ListView.separated(
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
-        return NewsSongsItems(
-          songEntity: songs[index],
+        return GestureDetector(
+          onTap: () {
+            context.push(AppRouter.kSongPlayerView, extra: songs[index]);
+          },
+          child: NewsSongsItems(
+            songEntity: songs[index],
+          ),
         );
       },
       separatorBuilder: (context, index) => SizedBox(
