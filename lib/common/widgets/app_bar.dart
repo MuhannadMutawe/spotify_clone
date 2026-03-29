@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BasicAppBar({
@@ -17,7 +18,9 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       centerTitle: centerTitle,
       elevation: 0,
+      leadingWidth: 70.w,
       backgroundColor: Colors.transparent,
+      scrolledUnderElevation: 0,
       title: title,
       leading: leading,
     );
