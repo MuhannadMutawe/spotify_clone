@@ -6,6 +6,7 @@ import 'package:spotify_app/data/sources/song/song_firebase_source.dart';
 import 'package:spotify_app/domain/usecases/auth/signin_use_case.dart';
 import 'package:spotify_app/domain/usecases/auth/signup_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/get_news_songs_use_case.dart';
+import 'package:spotify_app/domain/usecases/song/get_play_list_use_case.dart';
 
 final getIt = GetIt.instance;
 
@@ -34,6 +35,12 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<GetNewsSongsUseCase>(
     GetNewsSongsUseCase(
+      getIt<SongRepositoryImplementation>(),
+    ),
+  );
+
+  getIt.registerSingleton<GetPlayListUseCase>(
+    GetPlayListUseCase(
       getIt<SongRepositoryImplementation>(),
     ),
   );

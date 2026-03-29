@@ -3,12 +3,14 @@ import 'package:go_router/go_router.dart';
 import 'package:spotify_app/domain/usecases/auth/signin_use_case.dart';
 import 'package:spotify_app/domain/usecases/auth/signup_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/get_news_songs_use_case.dart';
+import 'package:spotify_app/domain/usecases/song/get_play_list_use_case.dart';
 import 'package:spotify_app/presentation/auth/manger/Sign_in/sign_in_cubit.dart';
 import 'package:spotify_app/presentation/auth/manger/sign_up/sign_up_cubit.dart';
 import 'package:spotify_app/presentation/auth/views/signin_view.dart';
 import 'package:spotify_app/presentation/auth/views/signup_or_signin_view.dart';
 import 'package:spotify_app/presentation/auth/views/signup_view.dart';
 import 'package:spotify_app/presentation/choose_mode/view/choose_mode_view.dart';
+import 'package:spotify_app/presentation/home/manger/cubit/get_play_list_cubit.dart';
 import 'package:spotify_app/presentation/home/manger/get_news_songs/get_news_songs_cubit.dart';
 import 'package:spotify_app/presentation/home/views/home_view.dart';
 import 'package:spotify_app/presentation/intro/views/get_started_view.dart';
@@ -62,6 +64,10 @@ abstract class AppRouter {
               create: (context) =>
                   GetNewsSongsCubit(getIt<GetNewsSongsUseCase>())
                     ..getNewsSongs(),
+            ),
+            BlocProvider<GetPlayListCubit>(
+              create: (context) =>
+                  GetPlayListCubit(getIt<GetPlayListUseCase>())..getPlayList(),
             ),
           ],
           child: const HomeView(),
