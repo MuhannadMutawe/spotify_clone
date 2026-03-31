@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:spotify_app/presentation/home/manger/cubit/get_play_list_cubit.dart';
-import 'package:spotify_app/presentation/home/manger/cubit/get_play_list_state.dart';
+import 'package:spotify_app/presentation/home/manger/get_play_list/get_play_list_cubit.dart';
+import 'package:spotify_app/presentation/home/manger/get_play_list/get_play_list_state.dart';
 import 'package:spotify_app/presentation/home/views/widget/play_lsit_header.dart';
 import 'package:spotify_app/presentation/home/views/widget/play_songs_list_view.dart';
 

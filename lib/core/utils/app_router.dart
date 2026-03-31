@@ -11,7 +11,7 @@ import 'package:spotify_app/presentation/auth/views/signin_view.dart';
 import 'package:spotify_app/presentation/auth/views/signup_or_signin_view.dart';
 import 'package:spotify_app/presentation/auth/views/signup_view.dart';
 import 'package:spotify_app/presentation/choose_mode/view/choose_mode_view.dart';
-import 'package:spotify_app/presentation/home/manger/cubit/get_play_list_cubit.dart';
+import 'package:spotify_app/presentation/home/manger/get_play_list/get_play_list_cubit.dart';
 import 'package:spotify_app/presentation/home/manger/get_news_songs/get_news_songs_cubit.dart';
 import 'package:spotify_app/presentation/home/views/home_view.dart';
 import 'package:spotify_app/presentation/intro/views/get_started_view.dart';

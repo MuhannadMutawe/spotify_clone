@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_app/domain/usecases/song/get_play_list_use_case.dart';
-import 'package:spotify_app/presentation/home/manger/cubit/get_play_list_state.dart';
+import 'package:spotify_app/presentation/home/manger/get_play_list/get_play_list_state.dart';
 
 class GetPlayListCubit extends Cubit<GetPlayListState> {
   GetPlayListCubit(this.getPlayListUseCase) : super(GetPlayListState.initial());
