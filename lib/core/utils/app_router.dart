@@ -15,6 +15,7 @@ import 'package:spotify_app/presentation/home/manger/get_play_list/get_play_list
 import 'package:spotify_app/presentation/home/manger/get_news_songs/get_news_songs_cubit.dart';
 import 'package:spotify_app/presentation/home/views/home_view.dart';
 import 'package:spotify_app/presentation/intro/views/get_started_view.dart';
+import 'package:spotify_app/presentation/song_player/manger/song_player/song_player_cubit.dart';
 import 'package:spotify_app/presentation/song_player/view/song_player_view.dart';
 import 'package:spotify_app/presentation/splash/view/splash_view.dart';
 import 'package:spotify_app/setup_service_locator.dart';
@@ -78,8 +79,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kSongPlayerView,
-        builder: (context, state) =>
-            SongPlayerView(songEntity: (state.extra) as SongEntity),
+        builder: (context, state) => BlocProvider(
+          create: (context) =>
+              SongPlayerCubit(songUrl: (state.extra as SongEntity).audioUrl),
+          child: SongPlayerView(songEntity: (state.extra) as SongEntity),
+        ),
       ),
     ],
   );

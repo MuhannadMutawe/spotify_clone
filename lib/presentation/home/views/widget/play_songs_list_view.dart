@@ -66,7 +66,7 @@ class PlaySongsListView extends StatelessWidget {
                         songs[index].artist,
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          fontSize: 11.sp,
+                          fontSize: 12.sp,
                         ),
                       ),
                     ],
@@ -75,13 +75,20 @@ class PlaySongsListView extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Text(songs[index].duration.toString().replaceAll('.', ':')),
+                  Text(
+                    songs[index].duration.toString().replaceAll('.', ':'),
+                    style: TextStyle(
+                      fontSize: 13.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                   SizedBox(
                     width: 20.w,
                   ),
                   IconButton(
                     onPressed: () {},
                     icon: Icon(
+                      size: 25.sp,
                       Icons.favorite_rounded,
                       color: AppColors.darkGrey,
                     ),
