@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spotify_app/common/bloc/favorite_button/favorite_button_cubit.dart';
 import 'package:spotify_app/common/helper/is_dark_mode.dart';
 import 'package:spotify_app/common/widgets/app_bar.dart';
 import 'package:spotify_app/domain/entities/song/song_entity.dart';

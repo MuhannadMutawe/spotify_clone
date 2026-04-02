@@ -23,6 +23,7 @@ class SongFirebaseSourceImplementation extends SongFirebaseSource {
       var songModel = SongModel.fromJsom(element.data());
       bool isFavorite = await isFavoriteSong(element.reference.id);
       songModel.isFavorite = isFavorite;
+      songModel.songId = element.reference.id;
       songs.add(songModel.toEntity());
     }
     return songs;
@@ -47,58 +48,42 @@ class SongFirebaseSourceImplementation extends SongFirebaseSource {
 
   @override
   Future<bool> addOrRemoveFavoriteSong(String songId) async {
-    final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-    final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    bool isFavorite = false;
-    var user = firebaseAuth.currentUser;
-    String userId = user!.uid;
-    var data = await firebaseFirestore
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return false;
+
+    final docRef = FirebaseFirestore.instance
         .collection('Users')
-        .doc(userId)
+        .doc(user.uid)
         .collection('Favorites')
-        .where(
-          'songId',
-          isEqualTo: songId,
-        )
-        .get();
-    if (data.docs.isEmpty) {
-      await firebaseFirestore
-          .collection('Users')
-          .doc(userId)
-          .collection('Favorites')
-          .add({
-            'songId': songId,
-            'addDate': Timestamp.now(),
-          });
-      isFavorite = true;
+        .doc(songId);
+
+    final doc = await docRef.get();
+
+    if (doc.exists) {
+      await docRef.delete();
+      return false;
     } else {
-      await data.docs.first.reference.delete();
-      isFavorite = false;
+      await docRef.set({
+        'addedDate': Timestamp.now(),
+      });
+      return true;
     }
-    return isFavorite;
   }
 
   @override
   Future<bool> isFavoriteSong(String songId) async {
     final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-    final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    bool isFavorite = false;
     var user = firebaseAuth.currentUser;
-    String userId = user!.uid;
-    var data = await firebaseFirestore
+
+    if (user == null) return false;
+
+    final doc = await FirebaseFirestore.instance
         .collection('Users')
-        .doc(userId)
+        .doc(user.uid)
         .collection('Favorites')
-        .where(
-          'songId',
-          isEqualTo: songId,
-        )
+        .doc(songId)
         .get();
-    if (data.docs.isEmpty) {
-      isFavorite = false;
-    } else {
-      isFavorite = true;
-    }
-    return isFavorite;
+
+    return doc.exists;
   }
 }

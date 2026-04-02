@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spotify_app/common/helper/is_dark_mode.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BasicAppBar({
@@ -23,6 +25,9 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 70.w,
       backgroundColor: Colors.transparent,
       scrolledUnderElevation: 0,
+      systemOverlayStyle: context.isDarkMode
+          ? SystemUiOverlayStyle.light
+          : SystemUiOverlayStyle.dark,
       title: title,
       leading: leading,
       actions: actions,

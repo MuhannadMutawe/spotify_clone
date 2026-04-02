@@ -7,6 +7,7 @@ import 'package:spotify_app/domain/usecases/auth/signup_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/add_or_remove_favorite_song_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/get_news_songs_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/get_play_list_use_case.dart';
+import 'package:spotify_app/domain/usecases/song/is_favorite_song_use_case.dart';
 import 'package:spotify_app/presentation/auth/manger/Sign_in/sign_in_cubit.dart';
 import 'package:spotify_app/presentation/auth/manger/sign_up/sign_up_cubit.dart';
 import 'package:spotify_app/presentation/auth/views/signin_view.dart';
@@ -75,20 +76,26 @@ abstract class AppRouter {
               create: (context) =>
                   GetPlayListCubit(getIt<GetPlayListUseCase>())..getPlayList(),
             ),
-            BlocProvider<FavoriteButtonCubit>(
-              create: (context) => FavoriteButtonCubit(
-                getIt<AddOrRemoveFavoriteSongUseCase>(),
-              ),
-            ),
           ],
           child: const HomeView(),
         ),
       ),
       GoRoute(
         path: kSongPlayerView,
-        builder: (context, state) => BlocProvider(
-          create: (context) =>
-              SongPlayerCubit(songUrl: (state.extra as SongEntity).audioUrl),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider<SongPlayerCubit>(
+              create: (context) => SongPlayerCubit(
+                songUrl: (state.extra as SongEntity).audioUrl,
+              ),
+            ),
+            BlocProvider<FavoriteButtonCubit>(
+              create: (context) => FavoriteButtonCubit(
+                getIt<AddOrRemoveFavoriteSongUseCase>(),
+                getIt<IsFavoriteSongUseCase>(),
+              )..loadInitialState((state.extra as SongEntity).songId),
+            ),
+          ],
           child: SongPlayerView(songEntity: (state.extra) as SongEntity),
         ),
       ),

@@ -6,47 +6,47 @@ import 'package:spotify_app/common/bloc/favorite_button/favorite_button_state.da
 import 'package:spotify_app/core/config/themes/app_colors.dart';
 import 'package:spotify_app/domain/entities/song/song_entity.dart';
 
-class FavoriteButton extends StatelessWidget {
+class FavoriteButton extends StatefulWidget {
   const FavoriteButton({super.key, required this.songEntity, this.iconSize});
 
   final SongEntity songEntity;
   final double? iconSize;
 
   @override
+  State<FavoriteButton> createState() => _FavoriteButtonState();
+}
+
+class _FavoriteButtonState extends State<FavoriteButton> {
+  bool isFavorite = false;
+
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FavoriteButtonCubit, FavoriteButtonState>(
-      builder: (context, state) {
-        return state.when(
-          initial: () => IconButton(
-            onPressed: () {
-              context.read<FavoriteButtonCubit>().favoriteButtonUpdate(
-                songEntity.songId,
-              );
-            },
-            icon: Icon(
-              size: iconSize ?? 25.sp,
-              color: songEntity.isFavorite ? Colors.red : AppColors.darkGrey,
-              songEntity.isFavorite
-                  ? Icons.favorite_rounded
-                  : Icons.favorite_border_rounded,
-            ),
-          ),
-          updated: (isFavorite) => IconButton(
-            onPressed: () {
-              context.read<FavoriteButtonCubit>().favoriteButtonUpdate(
-                songEntity.songId,
-              );
-            },
-            icon: Icon(
-              size: iconSize ?? 25.sp,
-              color: isFavorite ? Colors.red : AppColors.darkGrey,
-              isFavorite
-                  ? Icons.favorite_rounded
-                  : Icons.favorite_border_rounded,
-            ),
-          ),
+    return BlocListener<FavoriteButtonCubit, FavoriteButtonState>(
+      listener: (context, state) {
+        state.when(
+          initial: () {
+            isFavorite = widget.songEntity.isFavorite;
+            setState(() {});
+          },
+          updated: (value) {
+            isFavorite = value;
+            setState(() {});
+          },
         );
       },
+
+      child: IconButton(
+        onPressed: () async {
+          await context.read<FavoriteButtonCubit>().favoriteButtonUpdate(
+            widget.songEntity.songId,
+          );
+        },
+        icon: Icon(
+          size: widget.iconSize ?? 25.sp,
+          color: isFavorite ? Colors.red : AppColors.darkGrey,
+          isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+        ),
+      ),
     );
   }
 }
