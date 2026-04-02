@@ -32,6 +32,22 @@ class SongRepositoryImplementation extends SongRepository {
       return Left(e.toString());
     }
   }
+
+  @override
+  Future<Either<String, bool>> addOrRemoveFavoriteSong(
+    String songId,
+  ) async {
+    try {
+      bool isFavorite = await songFirebaseSource.addOrRemoveFavoriteSong(
+        songId,
+      );
+      return Right(isFavorite);
+    } on FirebaseException catch (e) {
+      return Left('Error is ${handleFirebaseError(e)}');
+    } on Exception catch (e) {
+      return Left(e.toString());
+    }
+  }
 }
 
 String handleFirebaseError(FirebaseException e) {
