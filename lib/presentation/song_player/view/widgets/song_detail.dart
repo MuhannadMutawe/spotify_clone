@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:spotify_app/core/config/themes/app_colors.dart';
+import 'package:spotify_app/common/widgets/favorite_button.dart';
 import 'package:spotify_app/domain/entities/song/song_entity.dart';
 
 class SongDetail extends StatelessWidget {
@@ -38,13 +38,9 @@ class SongDetail extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.favorite_border_rounded,
-            size: 35.sp,
-            color: AppColors.darkGrey,
-          ),
+        FavoriteButton(
+          songEntity: songEntity,
+          iconSize: 30.sp,
         ),
       ],
     );
