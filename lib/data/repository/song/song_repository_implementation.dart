@@ -48,6 +48,18 @@ class SongRepositoryImplementation extends SongRepository {
       return Left(e.toString());
     }
   }
+
+  @override
+  Future<bool> isFavoriteSong(String songId) async {
+    try {
+      bool isFavorite = await songFirebaseSource.isFavoriteSong(
+        songId,
+      );
+      return isFavorite;
+    } catch (e) {
+      return false;
+    }
+  }
 }
 
 String handleFirebaseError(FirebaseException e) {

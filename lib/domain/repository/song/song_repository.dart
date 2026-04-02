@@ -7,4 +7,5 @@ abstract class SongRepository {
   Future<Either<String, bool>> addOrRemoveFavoriteSong(
     String songId,
   );
+  Future<bool> isFavoriteSong(String songId);
 }
