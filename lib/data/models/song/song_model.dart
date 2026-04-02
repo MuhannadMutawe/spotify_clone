@@ -8,6 +8,8 @@ class SongModel {
   String? audioUrl;
   double? duration;
   Timestamp? releaseDate;
+  bool? isFavorite;
+  String? songId;
 
   SongModel({
     required this.title,
@@ -16,6 +18,8 @@ class SongModel {
     required this.releaseDate,
     required this.imageCover,
     required this.audioUrl,
+    required this.isFavorite,
+    required this.songId,
   });
 
   SongModel.fromJsom(Map<String, dynamic> data) {
@@ -37,6 +41,8 @@ extension SongModelX on SongModel {
       releaseDate: releaseDate!,
       imageCover: imageCover!,
       audioUrl: audioUrl!,
+      isFavorite: isFavorite!,
+      songId: songId!,
     );
   }
 }

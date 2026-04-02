@@ -21,6 +21,8 @@ class SongFirebaseSourceImplementation extends SongFirebaseSource {
         .get();
     for (var element in data.docs) {
       var songModel = SongModel.fromJsom(element.data());
+      bool isFavorite = await isFavoriteSong(element.reference.id);
+      songModel.isFavorite = isFavorite;
       songs.add(songModel.toEntity());
     }
     return songs;
@@ -35,6 +37,9 @@ class SongFirebaseSourceImplementation extends SongFirebaseSource {
         .get();
     for (var element in data.docs) {
       var songModel = SongModel.fromJsom(element.data());
+      bool isFavorite = await isFavoriteSong(element.reference.id);
+      songModel.isFavorite = isFavorite;
+      songModel.songId = element.reference.id;
       songs.add(songModel.toEntity());
     }
     return songs;
