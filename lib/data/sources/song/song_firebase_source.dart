@@ -7,6 +7,7 @@ abstract class SongFirebaseSource {
   Future<List<SongEntity>> getNewsSong();
   Future<List<SongEntity>> getPlayList();
   Future<bool> addOrRemoveFavoriteSong(String songId);
+  Future<bool> isFavoriteSong(String songId);
 }
 
 class SongFirebaseSourceImplementation extends SongFirebaseSource {
@@ -68,6 +69,30 @@ class SongFirebaseSourceImplementation extends SongFirebaseSource {
     } else {
       await data.docs.first.reference.delete();
       isFavorite = false;
+    }
+    return isFavorite;
+  }
+
+  @override
+  Future<bool> isFavoriteSong(String songId) async {
+    final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    bool isFavorite = false;
+    var user = firebaseAuth.currentUser;
+    String userId = user!.uid;
+    var data = await firebaseFirestore
+        .collection('Users')
+        .doc(userId)
+        .collection('Favorites')
+        .where(
+          'songId',
+          isEqualTo: songId,
+        )
+        .get();
+    if (data.docs.isEmpty) {
+      isFavorite = false;
+    } else {
+      isFavorite = true;
     }
     return isFavorite;
   }
