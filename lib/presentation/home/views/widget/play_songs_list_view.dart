@@ -89,7 +89,9 @@ class PlaySongsListView extends StatelessWidget {
                     onPressed: () {},
                     icon: Icon(
                       size: 25.sp,
-                      Icons.favorite_rounded,
+                      songs[index].isFavorite
+                          ? Icons.favorite_rounded
+                          : Icons.favorite_border_rounded,
                       color: AppColors.darkGrey,
                     ),
                   ),
