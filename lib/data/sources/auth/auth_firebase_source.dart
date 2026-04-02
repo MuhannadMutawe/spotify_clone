@@ -24,9 +24,12 @@ class AuthFirebaseSourceImplementation extends AuthFirebaseSource {
       email: user.email,
       password: user.password,
     );
-    await FirebaseFirestore.instance.collection('Users').add({
-      'name': user.fullName,
-      'email': data.user?.email,
-    });
+    await FirebaseFirestore.instance
+        .collection('Users')
+        .doc(data.user?.uid)
+        .set({
+          'name': user.fullName,
+          'email': data.user?.email,
+        });
   }
 }
