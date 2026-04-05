@@ -18,6 +18,7 @@ import 'package:spotify_app/presentation/home/manger/get_play_list/get_play_list
 import 'package:spotify_app/presentation/home/manger/get_news_songs/get_news_songs_cubit.dart';
 import 'package:spotify_app/presentation/home/views/home_view.dart';
 import 'package:spotify_app/presentation/intro/views/get_started_view.dart';
+import 'package:spotify_app/presentation/profile/view/profile_view.dart';
 import 'package:spotify_app/presentation/song_player/manger/song_player/song_player_cubit.dart';
 import 'package:spotify_app/presentation/song_player/view/song_player_view.dart';
 import 'package:spotify_app/presentation/splash/view/splash_view.dart';
@@ -31,6 +32,7 @@ abstract class AppRouter {
   static const kSignInView = '/kSignInView';
   static const kHomeView = '/kHomeView';
   static const kSongPlayerView = '/kSongPlayerView';
+  static const kProfileView = '/kProfileView';
   static final GoRouter router = GoRouter(
     routes: [
       GoRoute(
@@ -98,6 +100,10 @@ abstract class AppRouter {
           ],
           child: SongPlayerView(songEntity: (state.extra) as SongEntity),
         ),
+      ),
+      GoRoute(
+        path: kProfileView,
+        builder: (context, state) => const ProfileView(),
       ),
     ],
   );
