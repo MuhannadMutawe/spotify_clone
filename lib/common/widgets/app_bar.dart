@@ -10,12 +10,14 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.leading,
     this.actions,
     this.centerTitle = true,
+    this.backgroundColor,
   });
 
   final Widget? title;
   final Widget? leading;
   final bool centerTitle;
   final List<Widget>? actions;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: centerTitle,
       elevation: 0,
       leadingWidth: 70.w,
-      backgroundColor: Colors.transparent,
+      backgroundColor: backgroundColor ?? Colors.transparent,
       scrolledUnderElevation: 0,
       systemOverlayStyle: context.isDarkMode
           ? SystemUiOverlayStyle.light
