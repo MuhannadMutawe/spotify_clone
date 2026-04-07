@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:spotify_app/data/models/auth/create_user_req.dart';
 import 'package:spotify_app/data/sources/auth/auth_firebase_source.dart';
+import 'package:spotify_app/domain/entities/auth/user.dart';
 import 'package:spotify_app/domain/repository/auth/auth_repository.dart';
 
 import '../../models/auth/signin_user_req.dart';
@@ -28,6 +29,18 @@ class AuthRepositoryImplementation extends AuthRepository {
     try {
       await authFirebaseSource.signup(user);
       return Right('Sign up Was Successful');
+    } on FirebaseAuthException catch (e) {
+      return Left('Error is ${handleAuthError(e)}');
+    } on Exception catch (e) {
+      return Left(e.toString());
+    }
+  }
+
+  @override
+  Future<Either<String, UserEntity>> getUser() async {
+    try {
+      var user = await authFirebaseSource.getUser();
+      return Right(user);
     } on FirebaseAuthException catch (e) {
       return Left('Error is ${handleAuthError(e)}');
     } on Exception catch (e) {

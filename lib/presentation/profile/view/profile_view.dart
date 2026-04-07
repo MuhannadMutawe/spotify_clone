@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spotify_app/common/helper/is_dark_mode.dart';
 import 'package:spotify_app/common/widgets/app_bar.dart';
 import 'package:spotify_app/presentation/profile/view/widgets/profile_view_body.dart';
