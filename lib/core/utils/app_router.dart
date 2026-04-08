@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:spotify_app/common/bloc/favorite_button/favorite_button_cubit.dart';
 import 'package:spotify_app/domain/entities/song/song_entity.dart';
+import 'package:spotify_app/domain/usecases/auth/get_user_use_case.dart';
 import 'package:spotify_app/domain/usecases/auth/signin_use_case.dart';
 import 'package:spotify_app/domain/usecases/auth/signup_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/add_or_remove_favorite_song_use_case.dart';
@@ -18,6 +19,7 @@ import 'package:spotify_app/presentation/home/manger/get_play_list/get_play_list
 import 'package:spotify_app/presentation/home/manger/get_news_songs/get_news_songs_cubit.dart';
 import 'package:spotify_app/presentation/home/views/home_view.dart';
 import 'package:spotify_app/presentation/intro/views/get_started_view.dart';
+import 'package:spotify_app/presentation/profile/manger/get_user_cubit/get_user_cubit.dart';
 import 'package:spotify_app/presentation/profile/view/profile_view.dart';
 import 'package:spotify_app/presentation/song_player/manger/song_player/song_player_cubit.dart';
 import 'package:spotify_app/presentation/song_player/view/song_player_view.dart';
@@ -103,7 +105,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kProfileView,
-        builder: (context, state) => const ProfileView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) =>
+              GetUserCubitCubit(getIt<GetUserUseCase>())..getUser(),
+          child: const ProfileView(),
+        ),
       ),
     ],
   );

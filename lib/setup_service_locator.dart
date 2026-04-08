@@ -3,6 +3,7 @@ import 'package:spotify_app/data/repository/auth/auth_repository_implementation.
 import 'package:spotify_app/data/repository/song/song_repository_implementation.dart';
 import 'package:spotify_app/data/sources/auth/auth_firebase_source.dart';
 import 'package:spotify_app/data/sources/song/song_firebase_source.dart';
+import 'package:spotify_app/domain/usecases/auth/get_user_use_case.dart';
 import 'package:spotify_app/domain/usecases/auth/signin_use_case.dart';
 import 'package:spotify_app/domain/usecases/auth/signup_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/add_or_remove_favorite_song_use_case.dart';
@@ -23,6 +24,14 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<SignupUseCase>(
     SignupUseCase(
+      AuthRepositoryImplementation(
+        AuthFirebaseSourceImplementation(),
+      ),
+    ),
+  );
+
+  getIt.registerSingleton<GetUserUseCase>(
+    GetUserUseCase(
       AuthRepositoryImplementation(
         AuthFirebaseSourceImplementation(),
       ),
