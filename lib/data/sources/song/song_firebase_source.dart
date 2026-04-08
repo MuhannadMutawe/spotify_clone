@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:spotify_app/data/models/song/song_model.dart';
@@ -8,6 +10,7 @@ abstract class SongFirebaseSource {
   Future<List<SongEntity>> getPlayList();
   Future<bool> addOrRemoveFavoriteSong(String songId);
   Future<bool> isFavoriteSong(String songId);
+  Future<List<SongEntity>> getUserFavoriteSongs();
 }
 
 class SongFirebaseSourceImplementation extends SongFirebaseSource {
@@ -85,5 +88,32 @@ class SongFirebaseSourceImplementation extends SongFirebaseSource {
         .get();
 
     return doc.exists;
+  }
+
+  @override
+  Future<List<SongEntity>> getUserFavoriteSongs() async {
+    final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    var user = firebaseAuth.currentUser;
+
+    List<SongEntity> favoriteSongs = [];
+
+    if (user != null) {
+      final data = await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(user.uid)
+          .collection('Favorites')
+          .get();
+      for (var element in data.docs) {
+        String songId = element['songId'];
+        var song = await FirebaseFirestore.instance
+            .collection('Songs')
+            .doc(songId)
+            .get();
+        SongModel songModel = SongModel.fromJsom(song.data()!);
+        favoriteSongs.add(songModel.toEntity());
+      }
+    }
+
+    return favoriteSongs;
   }
 }
