@@ -60,6 +60,18 @@ class SongRepositoryImplementation extends SongRepository {
       return false;
     }
   }
+
+  @override
+  Future<Either<String, List<SongEntity>>> getUserFavoriteSongs() async {
+    try {
+      List<SongEntity> songs = await songFirebaseSource.getUserFavoriteSongs();
+      return Right(songs);
+    } on FirebaseException catch (e) {
+      return Left('Error is ${handleFirebaseError(e)}');
+    } on Exception catch (e) {
+      return Left(e.toString());
+    }
+  }
 }
 
 String handleFirebaseError(FirebaseException e) {
