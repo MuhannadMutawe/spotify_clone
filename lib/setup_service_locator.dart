@@ -9,6 +9,7 @@ import 'package:spotify_app/domain/usecases/auth/signup_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/add_or_remove_favorite_song_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/get_news_songs_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/get_play_list_use_case.dart';
+import 'package:spotify_app/domain/usecases/song/get_user_favorite_songs_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/is_favorite_song_use_case.dart';
 
 final getIt = GetIt.instance;
@@ -64,6 +65,12 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<IsFavoriteSongUseCase>(
     IsFavoriteSongUseCase(
+      getIt<SongRepositoryImplementation>(),
+    ),
+  );
+
+  getIt.registerSingleton<GetUserFavoriteSongsUseCase>(
+    GetUserFavoriteSongsUseCase(
       getIt<SongRepositoryImplementation>(),
     ),
   );

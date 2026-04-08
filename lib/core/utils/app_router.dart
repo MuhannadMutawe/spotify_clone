@@ -8,6 +8,7 @@ import 'package:spotify_app/domain/usecases/auth/signup_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/add_or_remove_favorite_song_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/get_news_songs_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/get_play_list_use_case.dart';
+import 'package:spotify_app/domain/usecases/song/get_user_favorite_songs_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/is_favorite_song_use_case.dart';
 import 'package:spotify_app/presentation/auth/manger/Sign_in/sign_in_cubit.dart';
 import 'package:spotify_app/presentation/auth/manger/sign_up/sign_up_cubit.dart';
@@ -19,6 +20,7 @@ import 'package:spotify_app/presentation/home/manger/get_play_list/get_play_list
 import 'package:spotify_app/presentation/home/manger/get_news_songs/get_news_songs_cubit.dart';
 import 'package:spotify_app/presentation/home/views/home_view.dart';
 import 'package:spotify_app/presentation/intro/views/get_started_view.dart';
+import 'package:spotify_app/presentation/profile/manger/cubit/get_user_favorite_songs_cubit.dart';
 import 'package:spotify_app/presentation/profile/manger/get_user_cubit/get_user_cubit.dart';
 import 'package:spotify_app/presentation/profile/view/profile_view.dart';
 import 'package:spotify_app/presentation/song_player/manger/song_player/song_player_cubit.dart';
@@ -105,8 +107,18 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kProfileView,
-        builder: (context, state) => BlocProvider(
-          create: (context) => GetUserCubit(getIt<GetUserUseCase>())..getUser(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider<GetUserCubit>(
+              create: (context) =>
+                  GetUserCubit(getIt<GetUserUseCase>())..getUser(),
+            ),
+            BlocProvider<GetUserFavoriteSongsCubit>(
+              create: (context) => GetUserFavoriteSongsCubit(
+                getIt<GetUserFavoriteSongsUseCase>(),
+              )..getUserFavoriteSongs(),
+            ),
+          ],
           child: const ProfileView(),
         ),
       ),
