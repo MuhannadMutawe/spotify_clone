@@ -106,8 +106,7 @@ abstract class AppRouter {
       GoRoute(
         path: kProfileView,
         builder: (context, state) => BlocProvider(
-          create: (context) =>
-              GetUserCubitCubit(getIt<GetUserUseCase>())..getUser(),
+          create: (context) => GetUserCubit(getIt<GetUserUseCase>())..getUser(),
           child: const ProfileView(),
         ),
       ),
