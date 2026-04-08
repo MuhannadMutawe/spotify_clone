@@ -37,6 +37,7 @@ class _HomeViewState extends State<HomeView> {
           IconButton(
             onPressed: () async {
               await context.push(AppRouter.kProfileView);
+              // ignore: use_build_context_synchronously
               await context.read<GetPlayListCubit>().getPlayList();
             },
             icon: Icon(Icons.person),
