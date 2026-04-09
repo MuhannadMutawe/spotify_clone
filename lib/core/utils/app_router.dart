@@ -20,7 +20,7 @@ import 'package:spotify_app/presentation/home/manger/get_play_list/get_play_list
 import 'package:spotify_app/presentation/home/manger/get_news_songs/get_news_songs_cubit.dart';
 import 'package:spotify_app/presentation/home/views/home_view.dart';
 import 'package:spotify_app/presentation/intro/views/get_started_view.dart';
-import 'package:spotify_app/presentation/profile/manger/cubit/get_user_favorite_songs_cubit.dart';
+import 'package:spotify_app/presentation/profile/manger/get_user_favorite_songs/get_user_favorite_songs_cubit.dart';
 import 'package:spotify_app/presentation/profile/manger/get_user_cubit/get_user_cubit.dart';
 import 'package:spotify_app/presentation/profile/view/profile_view.dart';
 import 'package:spotify_app/presentation/song_player/manger/song_player/song_player_cubit.dart';

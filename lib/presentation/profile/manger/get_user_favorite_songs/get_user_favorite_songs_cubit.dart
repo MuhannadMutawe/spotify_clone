@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_app/domain/usecases/song/get_user_favorite_songs_use_case.dart';
-import 'package:spotify_app/presentation/profile/manger/cubit/get_user_favorite_songs_state.dart';
+import 'package:spotify_app/presentation/profile/manger/get_user_favorite_songs/get_user_favorite_songs_state.dart';
 
 class GetUserFavoriteSongsCubit extends Cubit<GetUserFavoriteSongsState> {
   GetUserFavoriteSongsCubit(this.getUserFavoriteSongsUseCase)
