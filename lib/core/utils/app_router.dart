@@ -118,6 +118,10 @@ abstract class AppRouter {
                 getIt<GetUserFavoriteSongsUseCase>(),
               )..getUserFavoriteSongs(),
             ),
+            BlocProvider<GetPlayListCubit>(
+              create: (context) =>
+                  GetPlayListCubit(getIt<GetPlayListUseCase>()),
+            ),
           ],
           child: const ProfileView(),
         ),

@@ -14,7 +14,7 @@ class DisplayUserInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 2.3.h,
+      height: MediaQuery.of(context).size.height / 2.7.h,
       width: double.infinity,
       decoration: BoxDecoration(
         color: context.isDarkMode ? Color(0xFF2C2B2B) : Colors.white,

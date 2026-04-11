@@ -41,8 +41,8 @@ extension SongModelX on SongModel {
       releaseDate: releaseDate!,
       imageCover: imageCover!,
       audioUrl: audioUrl!,
-      isFavorite: isFavorite!,
-      songId: songId!,
+      isFavorite: isFavorite ?? false,
+      songId: songId ?? '',
     );
   }
 }

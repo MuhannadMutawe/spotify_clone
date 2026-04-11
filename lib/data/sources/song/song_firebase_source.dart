@@ -102,12 +102,13 @@ class SongFirebaseSourceImplementation extends SongFirebaseSource {
           .collection('Favorites')
           .get();
       for (var element in data.docs) {
-        String songId = element['songId'];
+        String songId = element.reference.id;
         var song = await FirebaseFirestore.instance
             .collection('Songs')
             .doc(songId)
             .get();
         SongModel songModel = SongModel.fromJsom(song.data()!);
+        songModel.songId = songId;
         favoriteSongs.add(songModel.toEntity());
       }
     }
