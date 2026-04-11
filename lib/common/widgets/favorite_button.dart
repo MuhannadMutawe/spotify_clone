@@ -5,47 +5,67 @@ import 'package:spotify_app/common/bloc/favorite_button/favorite_button_cubit.da
 import 'package:spotify_app/common/bloc/favorite_button/favorite_button_state.dart';
 import 'package:spotify_app/core/config/themes/app_colors.dart';
 import 'package:spotify_app/domain/entities/song/song_entity.dart';
+import 'package:spotify_app/domain/usecases/song/add_or_remove_favorite_song_use_case.dart';
+import 'package:spotify_app/domain/usecases/song/is_favorite_song_use_case.dart';
+import 'package:spotify_app/setup_service_locator.dart';
 
-class FavoriteButton extends StatefulWidget {
-  const FavoriteButton({super.key, required this.songEntity, this.iconSize});
+class FavoriteButton extends StatelessWidget {
+  const FavoriteButton({
+    super.key,
+    required this.songEntity,
+    this.iconSize,
+    this.function,
+  });
 
   final SongEntity songEntity;
   final double? iconSize;
-
-  @override
-  State<FavoriteButton> createState() => _FavoriteButtonState();
-}
-
-class _FavoriteButtonState extends State<FavoriteButton> {
-  bool isFavorite = false;
+  final Function? function;
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<FavoriteButtonCubit, FavoriteButtonState>(
-      listener: (context, state) {
-        state.when(
-          initial: () {
-            isFavorite = widget.songEntity.isFavorite;
-            setState(() {});
-          },
-          updated: (value) {
-            isFavorite = value;
-            setState(() {});
-          },
-        );
-      },
-
-      child: IconButton(
-        onPressed: () async {
-          await context.read<FavoriteButtonCubit>().favoriteButtonUpdate(
-            widget.songEntity.songId,
+    return BlocProvider(
+      create: (context) => FavoriteButtonCubit(
+        getIt<AddOrRemoveFavoriteSongUseCase>(),
+        getIt<IsFavoriteSongUseCase>(),
+      ),
+      child: BlocBuilder<FavoriteButtonCubit, FavoriteButtonState>(
+        builder: (context, state) {
+          return state.when(
+            initial: () {
+              return IconButton(
+                onPressed: () {
+                  context.read<FavoriteButtonCubit>().favoriteButtonUpdate(
+                    songEntity.songId,
+                  );
+                  if (function != null) {
+                    function!();
+                  }
+                },
+                icon: Icon(
+                  songEntity.isFavorite
+                      ? Icons.favorite
+                      : Icons.favorite_outline_outlined,
+                  size: iconSize ?? 25.sp,
+                  color: AppColors.darkGrey,
+                ),
+              );
+            },
+            updated: (isFavorite) {
+              return IconButton(
+                onPressed: () {
+                  context.read<FavoriteButtonCubit>().favoriteButtonUpdate(
+                    songEntity.songId,
+                  );
+                },
+                icon: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_outline_outlined,
+                  size: iconSize ?? 25.sp,
+                  color: AppColors.darkGrey,
+                ),
+              );
+            },
           );
         },
-        icon: Icon(
-          size: widget.iconSize ?? 25.sp,
-          color: isFavorite ? Colors.red : AppColors.darkGrey,
-          isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-        ),
       ),
     );
   }

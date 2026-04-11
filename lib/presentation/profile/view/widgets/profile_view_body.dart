@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:spotify_app/common/bloc/favorite_button/favorite_button_cubit.dart';
 import 'package:spotify_app/common/widgets/favorite_button.dart';
 import 'package:spotify_app/core/utils/app_router.dart';
-import 'package:spotify_app/domain/usecases/song/add_or_remove_favorite_song_use_case.dart';
-import 'package:spotify_app/domain/usecases/song/is_favorite_song_use_case.dart';
 import 'package:spotify_app/presentation/profile/manger/get_user_favorite_songs/get_user_favorite_songs_cubit.dart';
 import 'package:spotify_app/presentation/profile/manger/get_user_favorite_songs/get_user_favorite_songs_state.dart';
 import 'package:spotify_app/presentation/profile/view/widgets/display_user_info.dart';
-import 'package:spotify_app/setup_service_locator.dart';
 
 class PorfileViewBody extends StatelessWidget {
   const PorfileViewBody({
@@ -105,15 +101,12 @@ class PorfileViewBody extends StatelessWidget {
                                     const SizedBox(
                                       width: 20,
                                     ),
-                                    BlocProvider(
-                                      create: (context) => FavoriteButtonCubit(
-                                        getIt<AddOrRemoveFavoriteSongUseCase>(),
-                                        getIt<IsFavoriteSongUseCase>(),
-                                      )..isFavoriteSongUseCase(song.songId),
-                                      child: FavoriteButton(
-                                        key: UniqueKey(),
-                                        songEntity: song,
-                                      ),
+                                    FavoriteButton(
+                                      key: UniqueKey(),
+                                      songEntity: song,
+                                      function: () => context
+                                          .read<GetUserFavoriteSongsCubit>()
+                                          .removeSong(index),
                                     ),
                                   ],
                                 ),

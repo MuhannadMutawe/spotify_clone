@@ -1,15 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:spotify_app/common/bloc/favorite_button/favorite_button_cubit.dart';
 import 'package:spotify_app/domain/entities/song/song_entity.dart';
 import 'package:spotify_app/domain/usecases/auth/get_user_use_case.dart';
 import 'package:spotify_app/domain/usecases/auth/signin_use_case.dart';
 import 'package:spotify_app/domain/usecases/auth/signup_use_case.dart';
-import 'package:spotify_app/domain/usecases/song/add_or_remove_favorite_song_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/get_news_songs_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/get_play_list_use_case.dart';
 import 'package:spotify_app/domain/usecases/song/get_user_favorite_songs_use_case.dart';
-import 'package:spotify_app/domain/usecases/song/is_favorite_song_use_case.dart';
 import 'package:spotify_app/presentation/auth/manger/Sign_in/sign_in_cubit.dart';
 import 'package:spotify_app/presentation/auth/manger/sign_up/sign_up_cubit.dart';
 import 'package:spotify_app/presentation/auth/views/signin_view.dart';
@@ -94,12 +91,6 @@ abstract class AppRouter {
               create: (context) => SongPlayerCubit(
                 songUrl: (state.extra as SongEntity).audioUrl,
               ),
-            ),
-            BlocProvider<FavoriteButtonCubit>(
-              create: (context) => FavoriteButtonCubit(
-                getIt<AddOrRemoveFavoriteSongUseCase>(),
-                getIt<IsFavoriteSongUseCase>(),
-              )..loadInitialState((state.extra as SongEntity).songId),
             ),
           ],
           child: SongPlayerView(songEntity: (state.extra) as SongEntity),
