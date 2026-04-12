@@ -27,7 +27,7 @@ class FavoriteButton extends StatelessWidget {
       create: (context) => FavoriteButtonCubit(
         getIt<AddOrRemoveFavoriteSongUseCase>(),
         getIt<IsFavoriteSongUseCase>(),
-      ),
+      )..isFavoriteSongUseCase(songEntity.songId),
       child: BlocBuilder<FavoriteButtonCubit, FavoriteButtonState>(
         builder: (context, state) {
           return state.when(
@@ -46,7 +46,9 @@ class FavoriteButton extends StatelessWidget {
                       ? Icons.favorite
                       : Icons.favorite_outline_outlined,
                   size: iconSize ?? 25.sp,
-                  color: AppColors.darkGrey,
+                  color: songEntity.isFavorite
+                      ? Colors.red
+                      : AppColors.darkGrey,
                 ),
               );
             },
@@ -60,7 +62,7 @@ class FavoriteButton extends StatelessWidget {
                 icon: Icon(
                   isFavorite ? Icons.favorite : Icons.favorite_outline_outlined,
                   size: iconSize ?? 25.sp,
-                  color: AppColors.darkGrey,
+                  color: isFavorite ? Colors.red : AppColors.darkGrey,
                 ),
               );
             },
