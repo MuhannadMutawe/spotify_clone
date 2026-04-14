@@ -109,6 +109,7 @@ class SongFirebaseSourceImplementation extends SongFirebaseSource {
             .get();
         SongModel songModel = SongModel.fromJsom(song.data()!);
         songModel.songId = songId;
+        songModel.isFavorite = true;
         favoriteSongs.add(songModel.toEntity());
       }
     }

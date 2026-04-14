@@ -8,6 +8,9 @@ import 'package:spotify_app/common/widgets/favorite_button.dart';
 import 'package:spotify_app/core/config/themes/app_colors.dart';
 import 'package:spotify_app/core/utils/app_router.dart';
 import 'package:spotify_app/domain/entities/song/song_entity.dart';
+import 'package:spotify_app/domain/usecases/song/add_or_remove_favorite_song_use_case.dart';
+import 'package:spotify_app/domain/usecases/song/is_favorite_song_use_case.dart';
+import 'package:spotify_app/setup_service_locator.dart';
 
 class PlaySongsListView extends StatefulWidget {
   const PlaySongsListView({
@@ -55,10 +58,6 @@ class SongDetails extends StatelessWidget {
         await context.push(
           AppRouter.kSongPlayerView,
           extra: song,
-        );
-
-        await context.read<FavoriteButtonCubit>().loadInitialState(
-          song.songId,
         );
       },
       child: Row(
@@ -121,8 +120,14 @@ class SongDetails extends StatelessWidget {
               SizedBox(
                 width: 20.w,
               ),
-              FavoriteButton(
-                songEntity: song,
+              BlocProvider(
+                create: (context) => FavoriteButtonCubit(
+                  getIt<AddOrRemoveFavoriteSongUseCase>(),
+                  getIt<IsFavoriteSongUseCase>(),
+                )..loadInitialState(song.songId),
+                child: FavoriteButton(
+                  songEntity: song,
+                ),
               ),
             ],
           ),

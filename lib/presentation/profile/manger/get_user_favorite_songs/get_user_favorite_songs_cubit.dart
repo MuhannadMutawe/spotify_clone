@@ -22,8 +22,10 @@ class GetUserFavoriteSongsCubit extends Cubit<GetUserFavoriteSongsState> {
     );
   }
 
-  void removeSong(int index) {
-    favoriteSongs.removeAt(index);
+  removeSong(int index) {
+    final updatedList = List<SongEntity>.from(favoriteSongs);
+    updatedList.removeAt(index);
+    favoriteSongs = updatedList;
     emit(GetUserFavoriteSongsState.success(favoriteSongs));
   }
 }

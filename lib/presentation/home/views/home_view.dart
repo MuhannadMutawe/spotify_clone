@@ -28,7 +28,7 @@ class HomeView extends StatelessWidget {
               onPressed: () async {
                 await context.push(AppRouter.kProfileView);
                 // ignore: use_build_context_synchronously
-                // await context.read<GetPlayListCubit>().getPlayList();
+                await context.read<GetPlayListCubit>().getPlayList();
               },
               icon: Icon(
                 Icons.person,
