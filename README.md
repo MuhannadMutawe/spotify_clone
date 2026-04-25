@@ -1,16 +1,21 @@
-# spotify_app
+# 🎧 Spotify Clone App (Flutter)
 
-A new Flutter project.
+A modern **Spotify-inspired music streaming app** built باستخدام Flutter، يركز على تجربة مستخدم سلسة وتصميم نظيف مع إدارة حالة احترافية.
 
-## Getting Started
+<p align="center">
+  <img src="assets\images\thumbnail.jpg"/>
+</p>
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 🎵 Browse & play songs
+- ❤️ Add / remove songs from favorites
+- 🔍 Search functionality
+- 📱 Responsive UI (works on multiple screen sizes)
+- 🎨 Clean and modern design (Spotify-like)
+- ⚡ State management using Bloc/Cubit
+- 🧠 Optimized performance
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
