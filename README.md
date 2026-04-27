@@ -34,3 +34,40 @@ A sleek, modern music streaming interface built with Flutter, based on the popul
 - 🧠 Optimized performance
 
 ---
+
+## 📁 Project Structure
+
+```
+## Project Structure
+
+The project is organized into layers following Clean Architecture principles:
+
+├── lib/
+│   ├── common/              # Shared components across the app
+│   │   ├── bloc/            # Global/common BLoCs
+│   │   ├── helper/          # General helper functions
+│   │   └── widgets/         # Reusable UI components
+│   ├── core/                # Core configurations and base logic
+│   │   ├── config/          # Environment and app-wide configs
+│   │   ├── usecases/        # Base classes for use cases
+│   │   └── utils/           # Extension methods and utilities
+│   ├── data/                # Data layer (implementation)
+│   │   ├── models/          # Data transfer objects (JSON parsing)
+│   │   ├── repository/      # Repository implementations
+│   │   └── sources/         # Remote and local data sources (APIs/DB)
+│   ├── domain/              # Domain layer (business logic)
+│   │   ├── entities/        # Core business objects
+│   │   ├── repository/      # Repository interfaces (abstract classes)
+│   │   └── usecases/        # Feature-specific business logic
+│   └── presentation/        # UI layer (screens and feature-specific logic)
+│       ├── auth/            # Authentication screens and logic
+│       ├── choose_mode/     # Theme/Mode selection
+│       ├── home/            # Home dashboard
+│       ├── intro/           # Onboarding screens
+│       ├── profile/         # User profile management
+│       ├── song_player/     # Music player interface
+│       └── splash/          # Initial splash screen
+
+```
+
+---
