@@ -35,6 +35,32 @@ A sleek, modern music streaming interface built with Flutter, based on the popul
 
 ---
 
+## 🧠 Architecture Overview
+
+This project follows **Uncle Bob’s Clean Architecture**, ensuring separation of concerns and scalability.
+
+### Layers
+
+#### Presentation Layer
+
+- Flutter UI (Screens & Widgets)
+- BLoC (Events & States)
+- Handles user interactions
+
+#### Domain Layer
+
+- Business logic (Use Cases)
+- Entities
+- Repository contracts
+
+#### Data Layer
+
+- Remote data source (Dio)
+- Local data source (Hive)
+- Models and repository implementations
+
+---
+
 ## 📁 Project Structure
 
 ```
