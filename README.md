@@ -61,6 +61,25 @@ This project follows **Uncle Bob’s Clean Architecture**, ensuring separation o
 
 ---
 
+## 🚀 Tech Stack
+
+| Category            | Technology               | Description                          |
+| ------------------- | ------------------------ | ------------------------------------ |
+| 🎨 Frontend         | Flutter                  | Cross-platform UI framework          |
+| 🎨 Frontend         | Dart                     | Programming language used in Flutter |
+| 🎨 UI Components    | Material UI              | Pre-built UI components              |
+| ⚙️ State Management | Flutter Bloc             | Predictable state management         |
+| 🎵 API              | Spotify API (firebase)   | Fetch music, albums, playlists       |
+| 🛠️ Utilities        | freezed                  | Simplify object comparison           |
+| 🛠️ DI               | GetIt                    | Dependency injection                 |
+| 📱 Responsive       | Flutter ScreenUtil       | Responsive UI design                 |
+| 🖼️ Images           | Cached Network Image     | Cache and load images efficiently    |
+| 🧪 Dev Tools        | VS Code / Android Studio | Development environments             |
+| 🔧 Version Control  | Git & GitHub             | Code management & collaboration      |
+| 🎨 Design           | Figma                    | UI/UX design tool                    |
+
+---
+
 ## 📁 Project Structure
 
 ```
