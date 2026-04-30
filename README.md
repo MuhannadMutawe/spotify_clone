@@ -116,3 +116,13 @@ The project is organized into layers following Clean Architecture principles:
 ```
 
 ---
+
+## 📸 App Screenshots
+
+| Launch Screen                                             | Get Started                                             | Choose Mode                                             | Signup Or Signin                                              | sign up                                            |
+| --------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------- |
+| <img src="assets/screens/launch_screen.png" width="180"/> | <img src="assets/screens/get_started.png" width="180"/> | <img src="assets/screens/choose_mode.png" width="180"/> | <img src="assets/screens/signup_or_sign in.png" width="180"/> | <img src="assets/screens/signup.png" width="180"/> |
+| sign In                                                   | Home                                                    | play song                                               | Profile                                                       | light mode                                         |
+| <img src="assets/screens/signin.png" width="180"/>        | <img src="assets/screens/home.png" width="180"/>        | <img src="assets/screens/play_song.png" width="180"/>   | <img src="assets/screens/profile.png" width="180"/>           | <img src="assets/screens/signup.png" width="180"/> |
+
+---
