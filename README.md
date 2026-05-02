@@ -126,3 +126,7 @@ The project is organized into layers following Clean Architecture principles:
 | <img src="assets/screens/signin.png" width="180"/>        | <img src="assets/screens/home.png" width="180"/>        | <img src="assets/screens/play_song.png" width="180"/>   | <img src="assets/screens/profile.png" width="180"/>           | <img src="assets\screens\lighte_mode.png" width="180"/> |
 
 ---
+
+## 👨‍💻 Author
+
+Spotify Clone Flutter App – v1.0.0
